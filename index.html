@@ -1,0 +1,84 @@
+<html>
+  <head>
+
+    <!-- located in /public folder, made accessible by server.js : style sheet + jQuery for client-side -->
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
+    <script src="js/jquery.min.js"></script>
+
+    <!-- javascript for updating client browser after Pi sends msg & jQuery for posting to Pi open command --> 
+    <script>
+
+      var host = location.origin.replace(/^http/, 'ws')
+      var ws = new WebSocket(host);
+
+      //after Pi sends message to server, server sends notification to browser (updates html with when notification was sent + updates Pi pic)
+      ws.onmessage = function (event) {
+        // Refresh image by tagging new time
+        d = new Date();
+        $("#timestamp").text( "Last visit on: " + event.data );
+        $("#securityimage").attr('src', 'http://136.152.38.74:8080/visitor.jpg?' + d.getTime() );
+      };
+
+      // get browser input and post to Pi
+      jQuery(function($){
+              
+        // Owner wants to open door -- button pressed
+        $( "#opendoor" ).click(function() {
+         
+          var data = {"open_door":"true"};
+
+          $.ajax({
+            url: "http://136.152.38.74:8080/",        // Pi IP
+            type: 'POST',
+            contentType:'application/json',       // JSON data structure
+            data: JSON.stringify(data),
+            dataType:'json'
+          });
+
+          console.log("Door should open!");
+
+        });
+
+        // Owner wants to open door -- button pressed
+        $( "#closedoor" ).click(function() {
+         
+          var data = {"open_door":"false"};
+
+          $.ajax({
+            url: "http://136.152.38.74:8080/",        // Pi IP
+            type: 'POST',
+            contentType:'application/json',       // JSON data structure
+            data: JSON.stringify(data),
+            dataType:'json'
+          });
+
+          console.log("Door should close!");
+
+        });
+      });
+
+    </script>
+  </head>
+  <body>
+
+    <!-- Initially, no visitors + default photo --> 
+    <div align="center">
+      <br><br>
+      <img id="securityimage" class="rounded-image" src="http://136.152.38.74:8080/visitor.jpg" height="400" width="600">
+      <br><br>
+      <div id="timestamp" class="notification-text">No new visitors recently!</div>
+      <br>
+    <!-- Buttons for locking/unlocking door -->
+      <div class="round-button"><div class="round-button-circle"><a href="#" class="round-button" id='opendoor'>Unlock</a></div></div>
+      <br>
+      <div class="round-button"><div class="round-button-circle"><a href="#" class="round-button" id='closedoor'>Lock</a></div></div>
+    </div>
+    <!--
+    <span id='opendoor' class="button">Unlock Door</span>
+    <span id='closedoor' class="button">Lock Door</button>
+    -->
+
+  </body>
+</html>
+
+<!-- raspistill -w 600 -h 400 -o visitor.jpg -->
