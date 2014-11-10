@@ -25,7 +25,7 @@
         // Owner wants to open door -- button pressed
         $( "#opendoor" ).click(function() {
          
-          var data = {"open_door":"true"};
+          var data = {"open_door":"1"};
 
           $.ajax({
             url: "http://136.152.38.74:8080/",        // Pi IP
@@ -42,7 +42,7 @@
         // Owner wants to open door -- button pressed
         $( "#closedoor" ).click(function() {
          
-          var data = {"open_door":"false"};
+          var data = {"open_door":"0"};
 
           $.ajax({
             url: "http://136.152.38.74:8080/",        // Pi IP

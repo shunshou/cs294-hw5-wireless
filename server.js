@@ -87,7 +87,7 @@ app.post('/', function(req, res) {
 
     var bell_rang = req.body.bell_rang;
     // make sure bell actually rang (not random msg)
-    if (bell_rang == "true"){
+    if (bell_rang == "1"){
       // Send timestamp of post in clean format for viewing
       wss.clients.forEach(function(client) {
         //client.send(color);
