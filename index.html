@@ -24,15 +24,38 @@
               
         // Owner wants to open door -- button pressed
         $( "#opendoor" ).click(function() {
+
          
           var data = {"open_door":"1"};
 
+
+           /*var url = 'http://136.152.38.74:5000/';
+           $('#myform').attr('action', url);
+           
+            $('<input type="hidden" name="json"/>').val(JSON.stringify(data)).appendTo('#myform');
+            $("#myform").submit();*/
+
+            /*var request = require('request');
+
+request.post(
+    'http://136.152.38.74:5000/',
+    { form: { key: 'value' } },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body)
+        }
+    }
+);*/
+
+
+
+
           $.ajax({
-            url: "//136.152.38.74:5000/",        // Pi IP
+            url: "http://136.152.38.74:5000/",        // Pi IP
             type: 'POST',
             contentType:'application/json',       // JSON data structure
             data: JSON.stringify(data),
-            dataType:'jsonp'
+            dataType:'json'
           });
 
           console.log("Door should open!");
@@ -45,11 +68,11 @@
           var data = {"open_door":"0"};
 
           $.ajax({
-            url: "//136.152.38.74:5000/",        // Pi IP
+            url: "http://136.152.38.74:5000/",        // Pi IP
             type: 'POST',
             contentType:'application/json',       // JSON data structure
             data: JSON.stringify(data),
-            dataType:'jsonp'
+            dataType:'json'
           });
 
           console.log("Door should close!");
@@ -77,6 +100,8 @@
     <span id='opendoor' class="button">Unlock Door</span>
     <span id='closedoor' class="button">Lock Door</button>
     -->
+
+    <div id="myform"></div>
 
   </body>
 </html>
