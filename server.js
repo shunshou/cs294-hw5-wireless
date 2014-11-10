@@ -3,7 +3,7 @@ var WebSocketServer = require('ws').Server
   , http = require('http')
   , express = require('express')
   , app = express()
-  , port = process.env.PORT || 8080;
+  , port = process.env.PORT || 5000;
 
 // If you want postgresql database
 //  pg = require('pg')

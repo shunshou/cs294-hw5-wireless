@@ -16,7 +16,7 @@
         // Refresh image by tagging new time
         d = new Date();
         $("#timestamp").text( "Last visit on: " + event.data );
-        $("#securityimage").attr('src', 'http://136.152.38.74:8080/visitor.jpg?' + d.getTime() );
+        $("#securityimage").attr('src', 'http://136.152.38.74:5000/visitor.jpg?' + d.getTime() );
       };
 
       // get browser input and post to Pi
@@ -28,11 +28,11 @@
           var data = {"open_door":"1"};
 
           $.ajax({
-            url: "http://136.152.38.74:8080/",        // Pi IP
+            url: "//136.152.38.74:5000/",        // Pi IP
             type: 'POST',
             contentType:'application/json',       // JSON data structure
             data: JSON.stringify(data),
-            dataType:'json'
+            dataType:'jsonp'
           });
 
           console.log("Door should open!");
@@ -45,11 +45,11 @@
           var data = {"open_door":"0"};
 
           $.ajax({
-            url: "http://136.152.38.74:8080/",        // Pi IP
+            url: "//136.152.38.74:5000/",        // Pi IP
             type: 'POST',
             contentType:'application/json',       // JSON data structure
             data: JSON.stringify(data),
-            dataType:'json'
+            dataType:'jsonp'
           });
 
           console.log("Door should close!");
@@ -64,7 +64,7 @@
     <!-- Initially, no visitors + default photo --> 
     <div align="center">
       <br><br>
-      <img id="securityimage" class="rounded-image" src="http://136.152.38.74:8080/visitor.jpg" height="400" width="600">
+      <img id="securityimage" class="rounded-image" src="http://136.152.38.74:5000/visitor.jpg" height="400" width="600">
       <br><br>
       <div id="timestamp" class="notification-text">No new visitors recently!</div>
       <br>
