@@ -1,7 +1,9 @@
+/* Body background color */
 body {
     background-color: #f1f1f1;
 }
 
+/* POST button (index.html) styles taken from tutorial*/
 .round-button {
     width:100px;
 }
@@ -12,7 +14,6 @@ body {
     border-radius: 50%;
     border:10px solid #cfdcec;
     overflow:hidden;
-    
     background: #4679BD; 
     box-shadow: 0 0 3px gray;
 }
@@ -36,11 +37,13 @@ body {
     text-decoration:none;
 }
 
+/* Visitor image style */
 .rounded-image {
     border: 10px solid #ffffff;
     border-radius: 25px;
 }
 
+/* Text style */
 .notification-text {
     text-align:center;
     color:#4679BD;

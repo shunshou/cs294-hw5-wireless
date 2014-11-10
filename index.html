@@ -24,16 +24,16 @@
               
         // Owner wants to open door -- button pressed
         $( "#opendoor" ).click(function() {
-
          
           var data = {"open_door":"1"};
 
-          // AJAX does not like cross domain; need to add to server: http://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
+          // AJAX does not like cross domain; need to add to server permission
+          // See http://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
 
           $.ajax({
             url: "http://136.152.38.74:5000/",        // Pi IP
             type: 'POST',
-            contentType:'application/json',       // JSON data structure
+            contentType:'application/json',           // JSON data structure
             data: JSON.stringify(data),
             dataType:'json'
           });
@@ -50,7 +50,7 @@
           $.ajax({
             url: "http://136.152.38.74:5000/",        // Pi IP
             type: 'POST',
-            contentType:'application/json',       // JSON data structure
+            contentType:'application/json',           // JSON data structure
             data: JSON.stringify(data),
             dataType:'json'
           });
@@ -71,22 +71,16 @@
       <br><br>
       <div id="timestamp" class="notification-text">No new visitors recently!</div>
       <br>
-    <!-- Buttons for locking/unlocking door -->
+    <!-- Buttons for locking/unlocking door (Kodama head turns left/right_-->
       <div class="notification-text">Kodama Head Direction</div>
       <br>
       <div class="round-button"><div class="round-button-circle"><a href="#" class="round-button" id='opendoor'>Left</a></div></div>
       <br>
       <div class="round-button"><div class="round-button-circle"><a href="#" class="round-button" id='closedoor'>Right</a></div></div>
     </div>
-    <!--
-    <span id='opendoor' class="button">Unlock Door</span>
-    <span id='closedoor' class="button">Lock Door</button>
-    -->
-
-    <div id="myform"></div>
 
   </body>
 </html>
 
-<!-- raspistill -w 600 -h 400 -o visitor.jpg ; twitter http://www.makeuseof.com/tag/how-to-build-a-raspberry-pi-twitter-bot/-->
+
 
