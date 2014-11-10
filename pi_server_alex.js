@@ -48,7 +48,7 @@ console.log('test');
 
 //router.route('/util') 
 	//.post(function(req, res) {
-		var postVal = req.body.value;
+		var postVal = req.body.open_door; //;req.body.value;
 		console.log(postVal);
 		doorLock(postVal);
 	res.json({ message: 'value recieved'});
@@ -58,7 +58,7 @@ console.log('test');
 		var getVal = "placeholder";
 		res.json({ value: getVal });*/
 
-		
+
 	});
 
 
