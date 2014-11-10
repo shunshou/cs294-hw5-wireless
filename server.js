@@ -91,7 +91,7 @@ app.post('/', function(req, res) {
       // Send timestamp of post in clean format for viewing
       wss.clients.forEach(function(client) {
         //client.send(color);
-        client.send(moment().format('MMMM Do YYYY, h:mm:ss a'));
+        client.send(moment().subtract(8, 'hours').format('MMMM Do YYYY, h:mm:ss a'));
       });
       res.send('Bell rang :) ! \r\n'); 
     }

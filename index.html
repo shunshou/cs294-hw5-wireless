@@ -28,27 +28,7 @@
          
           var data = {"open_door":"1"};
 
-
-           /*var url = 'http://136.152.38.74:5000/';
-           $('#myform').attr('action', url);
-           
-            $('<input type="hidden" name="json"/>').val(JSON.stringify(data)).appendTo('#myform');
-            $("#myform").submit();*/
-
-            /*var request = require('request');
-
-request.post(
-    'http://136.152.38.74:5000/',
-    { form: { key: 'value' } },
-    function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log(body)
-        }
-    }
-);*/
-
-
-
+          // AJAX does not like cross domain; need to add to server: http://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
 
           $.ajax({
             url: "http://136.152.38.74:5000/",        // Pi IP
@@ -92,9 +72,14 @@ request.post(
       <div id="timestamp" class="notification-text">No new visitors recently!</div>
       <br>
     <!-- Buttons for locking/unlocking door -->
-      <div class="round-button"><div class="round-button-circle"><a href="#" class="round-button" id='opendoor'>Unlock</a></div></div>
+
+      <div id="timestamp" class="notification-text">No new visitors recently!</div>
+
+      <div class="notification-text">Kodama Head Direction</div>
+
+      <div class="round-button"><div class="round-button-circle"><a href="#" class="round-button" id='opendoor'>Left</a></div></div>
       <br>
-      <div class="round-button"><div class="round-button-circle"><a href="#" class="round-button" id='closedoor'>Lock</a></div></div>
+      <div class="round-button"><div class="round-button-circle"><a href="#" class="round-button" id='closedoor'>Right</a></div></div>
     </div>
     <!--
     <span id='opendoor' class="button">Unlock Door</span>
@@ -106,4 +91,5 @@ request.post(
   </body>
 </html>
 
-<!-- raspistill -w 600 -h 400 -o visitor.jpg ; twitter-->
+<!-- raspistill -w 600 -h 400 -o visitor.jpg ; twitter http://www.makeuseof.com/tag/how-to-build-a-raspberry-pi-twitter-bot/-->
+
